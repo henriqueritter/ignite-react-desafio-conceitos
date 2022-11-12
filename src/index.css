@@ -25,6 +25,6 @@
 
 body {
     -webkit-font-smoothing: antialsed;
-    background: var(--gray-100);
-    color: var(--green-300);
+    background: var(--gray-600);
+    color: var(--gray-100);
 }
