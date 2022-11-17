@@ -17,15 +17,21 @@ function App() {
         </button>
       </form>
       <div className={styles.contentSection}>
-        <div className='todosContent'>
-          <span>Tarefas criadas 0</span>
-          <span>Concluídas 0</span>
-          --------
-          <div>
-            <img src={clipboardIco} alt="Clipboard" />
-            <span>Você ainda não tem tarefas cadastradas</span>
-            <span>Crie tarefas e organize seus itens a fazer</span>
-          </div>
+        <div className={styles.contentHeaders}>
+          <span className={styles.headerTask}>
+            Tarefas criadas
+            <span className={styles.taskCounter}>0</span>
+          </span>
+          <span className={styles.headerCompleted}>
+            Concluídas
+            <span className={styles.taskCounter}>0</span>
+          </span>
+        </div>
+
+        <div className={styles.contentTodos}>
+          <img src={clipboardIco} alt="Clipboard" />
+          <span >Você ainda não tem tarefas cadastradas</span>
+          <span>Crie tarefas e organize seus itens a fazer</span>
         </div>
       </div>
     </div>
