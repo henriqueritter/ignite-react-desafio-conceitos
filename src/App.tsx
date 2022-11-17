@@ -11,7 +11,7 @@ function App() {
         <strong className={styles.headerTitle}>to</strong><strong>do</strong>
       </header>
       <form className={styles.todoForm} onScroll={() => alert('OK')}>
-        <textarea />
+        <textarea placeholder='Adicione uma nova tarefa' />
         <button>
           Criar <PlusCircle size={32} />
         </button>
