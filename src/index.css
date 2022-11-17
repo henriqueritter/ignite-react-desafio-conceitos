@@ -26,5 +26,6 @@
 body {
     -webkit-font-smoothing: antialsed;
     background: var(--gray-600);
+    position: relative;
     color: var(--gray-100);
 }
