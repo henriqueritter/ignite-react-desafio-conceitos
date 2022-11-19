@@ -27,16 +27,30 @@ function App() {
             <span className={styles.taskCounter}>0</span>
           </span>
         </div>
+        <TodosSection />
 
-        <div className={styles.contentTodos}>
-
-          <img src={clipboardIco} alt="Clipboard" />
-          <span>Você ainda não tem tarefas cadastradas</span>
-          <p>Crie tarefas e organize seus itens a fazer</p>
-        </div>
       </div>
     </div>
   )
+}
+
+function TodosSection() {
+  const todos = true;
+  if (todos) {
+    return (
+      <div className={styles.contentTodos}>
+        <h1>asd</h1>
+      </div>
+    )
+  } else {
+    return (
+      <div className={styles.contentTodos}>
+        <img src={clipboardIco} alt="Clipboard" />
+        <span>Você ainda não tem tarefas cadastradas</span>
+        <p>Crie tarefas e organize seus itens a fazer</p>
+      </div>
+    )
+  }
 }
 
 export default App
