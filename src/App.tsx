@@ -35,7 +35,7 @@ function App() {
 }
 
 function TodosSection() {
-  const todos = true;
+  const todos = [];
   if (todos) {
     return (
       <div className={styles.contentTodos}>
