@@ -1,7 +1,7 @@
 import styles from './App.module.css'
 import rocketLogo from './assets/rocket.svg';
 import clipboardIco from './assets/clipboard.svg';
-import { PlusCircle } from 'phosphor-react';
+import { PlusCircle, Trash } from 'phosphor-react';
 
 function App() {
   return (
@@ -35,11 +35,25 @@ function App() {
 }
 
 function TodosSection() {
-  const todos = [];
+  const todos: any = [];
   if (todos) {
     return (
       <div className={styles.contentTodos}>
-        <h1>asd</h1>
+        <div className={styles.todo}>
+          <input type="checkbox" />
+          <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+          <Trash size={16} />
+        </div>
+        <div className={styles.todo}>
+          <input type="checkbox" />
+          <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+          <Trash size={16} />
+        </div>
+        <div className={styles.todo}>
+          <input type="checkbox" />
+          <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+          <Trash size={16} />
+        </div>
       </div>
     )
   } else {
