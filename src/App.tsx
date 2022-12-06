@@ -35,13 +35,23 @@ function App() {
 }
 
 function TodosSection() {
-  const todos: any = [];
+  const todos: any = [
+    {
+      id: 1234,
+      content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer",
+      isChecked: true
+    }
+  ];
+
+
   if (todos) {
     return (
       <div className={styles.contentTodos}>
         <div className={styles.todo}>
           <input type="checkbox" />
-          <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+          <p className={todos[0].isChecked ? styles.checkedTodo : styles.unCheckedTodo}>
+            Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
+          </p>
           <Trash size={16} />
         </div>
         <div className={styles.todo}>
@@ -54,7 +64,7 @@ function TodosSection() {
           <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
           <Trash size={16} />
         </div>
-      </div>
+      </div >
     )
   } else {
     return (

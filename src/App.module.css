@@ -170,9 +170,17 @@ header {
     margin-top: 1rem;
 }
 
-.todo p {
+.unCheckedTodo {
     width: 40rem;
     margin-left: 1rem;
     margin-right: 0.5rem;
     text-align: initial;
+}
+
+.checkedTodo {
+    width: 40rem;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+    text-align: initial;
+    text-decoration: line-through;
 }
