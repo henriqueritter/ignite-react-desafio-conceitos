@@ -5,6 +5,24 @@ import { PlusCircle, Trash, Circle, CheckCircle, Student } from 'phosphor-react'
 
 import { Todo } from './components/Todo';
 
+const todos: ITodo[] = [
+  {
+    id: 1234,
+    content: "Duis vel sed fames integer",
+    isChecked: true
+  },
+  {
+    id: 1235,
+    content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer",
+    isChecked: true
+  },
+  {
+    id: 1236,
+    content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer",
+    isChecked: false
+  }
+];
+
 function App() {
 
   return (
@@ -23,11 +41,11 @@ function App() {
         <div className={styles.contentHeaders}>
           <span className={styles.headerTask}>
             Tarefas criadas
-            <span className={styles.taskCounter}>0</span>
+            <span className={styles.taskCounter}>{todos.length}</span>
           </span>
           <span className={styles.headerCompleted}>
             Concluídas
-            <span className={styles.taskCounter}>0</span>
+            <span className={styles.taskCounter}>{`${todos.filter(todo => todo.isChecked == true).length} de ${todos.length}`}</span>
           </span>
         </div>
         <TodosSection />
@@ -48,24 +66,6 @@ function TodosSection(props: any) {
   function handleCheckTodo(todoId: number) {
     alert(`todo ${todoId} updated`)
   }
-
-  const todos: ITodo[] = [
-    {
-      id: 1234,
-      content: "Duis vel sed fames integer",
-      isChecked: false
-    },
-    {
-      id: 1235,
-      content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer",
-      isChecked: true
-    },
-    {
-      id: 1236,
-      content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer",
-      isChecked: false
-    }
-  ];
 
   if (todos) {
     return (

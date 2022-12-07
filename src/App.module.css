@@ -113,8 +113,10 @@ header {
     align-items: center;
     text-align: center;
     border-radius: 999px;
-    width: 1.5rem;
-    height: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
     font-weight: 700;
     font-size: 0.75rem;
     line-height: 1rem;
