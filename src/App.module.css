@@ -155,37 +155,3 @@ header {
     line-height: 1.4;
     text-align: center;
 }
-
-.todo {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    background-color: var(--gray-400);
-    padding: 1rem;
-    border-radius: 8px;
-}
-
-.todo+.todo {
-    margin-top: 1rem;
-}
-
-.checkBox {
-    color: var(--purple-600);
-}
-
-.unCheckedTodo {
-    width: 100%;
-    margin-left: 1rem;
-    margin-right: 0.5rem;
-    text-align-last: initial;
-    color: var(--gray-100)
-}
-
-.checkedTodo {
-    width: 100%;
-    margin-left: 1rem;
-    margin-right: 0.5rem;
-    text-align: initial;
-    text-decoration: line-through;
-}

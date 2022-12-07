@@ -3,6 +3,8 @@ import rocketLogo from './assets/rocket.svg';
 import clipboardIco from './assets/clipboard.svg';
 import { PlusCircle, Trash, Circle, CheckCircle, Student } from 'phosphor-react';
 
+import { Todo } from './components/Todo';
+
 function App() {
 
   return (
@@ -35,40 +37,44 @@ function App() {
   )
 }
 
+interface ITodo {
+  id: number;
+  content: string;
+  isChecked: boolean;
+}
+
 function TodosSection(props: any) {
 
-  function handleCheckTodo() {
-    console.log('Clicou');
+  function handleCheckTodo(todoId: number) {
+    alert(`todo ${todoId} updated`)
   }
 
-  const todos: any = [
+  const todos: ITodo[] = [
     {
       id: 1234,
+      content: "Duis vel sed fames integer",
+      isChecked: false
+    },
+    {
+      id: 1235,
       content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer",
       isChecked: true
+    },
+    {
+      id: 1236,
+      content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer",
+      isChecked: false
     }
   ];
 
   if (todos) {
     return (
       <div className={styles.contentTodos}>
-        <div className={styles.todo}>
-          <CheckCircle onClick={handleCheckTodo} weight="fill" className={styles.checkBox} size={32} />
-          <div className={todos[0].isChecked ? styles.checkedTodo : styles.unCheckedTodo}>
-            Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
-          </div>
-          <Trash size={16} />
-        </div>
-        <div className={styles.todo}>
-          <Circle className={styles.checkBox} size={32} />
-          <div className={styles.unCheckedTodo}>Integer urna .</div>
-          <Trash size={16} />
-        </div>
-        <div className={styles.todo}>
-          <Circle className={styles.checkBox} size={32} />
-          <div className={styles.unCheckedTodo}>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</div>
-          <Trash size={16} />
-        </div>
+        {todos.map(item => {
+          return <Todo
+            todo={item}
+            onCheckTodo={handleCheckTodo} />
+        })}
       </div >
     )
   } else {
