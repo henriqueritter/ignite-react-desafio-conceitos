@@ -1,9 +1,10 @@
 import styles from './App.module.css'
 import rocketLogo from './assets/rocket.svg';
 import clipboardIco from './assets/clipboard.svg';
-import { PlusCircle, Trash } from 'phosphor-react';
+import { PlusCircle, Trash, Circle, CheckCircle, Student } from 'phosphor-react';
 
 function App() {
+
   return (
     <div className="App">
       <header>
@@ -34,7 +35,12 @@ function App() {
   )
 }
 
-function TodosSection() {
+function TodosSection(props: any) {
+
+  function handleCheckTodo() {
+    console.log('Clicou');
+  }
+
   const todos: any = [
     {
       id: 1234,
@@ -43,25 +49,24 @@ function TodosSection() {
     }
   ];
 
-
   if (todos) {
     return (
       <div className={styles.contentTodos}>
         <div className={styles.todo}>
-          <input type="checkbox" />
-          <p className={todos[0].isChecked ? styles.checkedTodo : styles.unCheckedTodo}>
+          <CheckCircle onClick={handleCheckTodo} weight="fill" className={styles.checkBox} size={32} />
+          <div className={todos[0].isChecked ? styles.checkedTodo : styles.unCheckedTodo}>
             Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
-          </p>
+          </div>
           <Trash size={16} />
         </div>
         <div className={styles.todo}>
-          <input type="checkbox" />
-          <p>Integer urna .</p>
+          <Circle className={styles.checkBox} size={32} />
+          <div className={styles.unCheckedTodo}>Integer urna .</div>
           <Trash size={16} />
         </div>
         <div className={styles.todo}>
-          <input type="checkbox" />
-          <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+          <Circle className={styles.checkBox} size={32} />
+          <div className={styles.unCheckedTodo}>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</div>
           <Trash size={16} />
         </div>
       </div >
