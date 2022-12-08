@@ -67,13 +67,19 @@ function TodosSection(props: any) {
     alert(`todo ${todoId} updated`)
   }
 
+  function handleDeleteTodo(todoId: number) {
+    alert(`todo ${todoId} deleted`)
+  }
+
   if (todos) {
     return (
       <div className={styles.contentTodos}>
         {todos.map(item => {
           return <Todo
             todo={item}
-            onCheckTodo={handleCheckTodo} />
+            onCheckTodo={handleCheckTodo}
+            onDeleteTodo={handleDeleteTodo}
+          />
         })}
       </div >
     )

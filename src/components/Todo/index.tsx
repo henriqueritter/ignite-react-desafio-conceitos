@@ -8,12 +8,16 @@ interface ITodo {
     isChecked: boolean;
   };
   onCheckTodo: (todoId: number) => void;
-
+  onDeleteTodo: (todoId: number) => void;
 }
 
-function Todo({ onCheckTodo, todo }: ITodo) {
+function Todo({ onCheckTodo, onDeleteTodo, todo }: ITodo) {
   function handleCheckTodo() {
     onCheckTodo(todo.id);
+  }
+
+  function handleDeleteTodo() {
+    onDeleteTodo(todo.id)
   }
 
   return (
@@ -34,7 +38,9 @@ function Todo({ onCheckTodo, todo }: ITodo) {
       >
         {todo.content}
       </div>
-      <Trash size={16} />
+      <Trash
+        size={16}
+        onClick={handleDeleteTodo} />
     </div>
   )
 }
