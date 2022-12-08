@@ -31,10 +31,9 @@ const initialTodos: ITodo[] = [
   }
 ];
 
-
 function App() {
-  const [todos, setTodos] = useState<ITodo[]>(initialTodos);
-  let content = "abc";
+  const [todos, setTodos] = useState<ITodo[]>(ini);
+  let content = "";
 
   function handleNewTodoChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('');
@@ -49,8 +48,16 @@ function App() {
       content,
       isChecked: false
     }
-
+    console.log(todos.length);
     setTodos([...todos, newTodo])
+  }
+
+  function handleCheckTodo(todoId: number) {
+    alert(`todo ${todoId} updated`)
+  }
+
+  function handleDeleteTodo(todoId: number) {
+    alert(`todo ${todoId} deleted`)
   }
 
   return (
@@ -59,10 +66,9 @@ function App() {
         <img src={rocketLogo} className={styles.headerLogo} alt="Logo Foguete" />
         <strong className={styles.headerTitle}>to</strong><strong>do</strong>
       </header>
-      <form className={styles.todoForm} onSubmit={handleCreateNewTodo} onScroll={() => alert('OK')}>
+      <form className={styles.todoForm} onSubmit={handleCreateNewTodo}>
         <textarea
           onChange={handleNewTodoChange}
-          value={content}
           placeholder='Adicione uma nova tarefa' />
         <button>
           Criar <PlusCircle size={32} />
@@ -79,50 +85,30 @@ function App() {
             <span className={styles.taskCounter}>{`${todos.filter(todo => todo.isChecked == true).length} de ${todos.length}`}</span>
           </span>
         </div>
-        <TodosSection todos={todos} />
+        {todos.length <= 0 ?
+          <div className={styles.contentTodos}>
+            <img src={clipboardIco} alt="Clipboard" />
+            <span>Você ainda não tem tarefas cadastradas</span>
+            <p>Crie tarefas e organize seus itens a fazer</p>
+          </div>
+          :
+          <div className={styles.contentTodos}>
+            {todos.map(item => {
+              return <Todo
+                key={item.id}
+                todo={item}
+                onCheckTodo={handleCheckTodo}
+                onDeleteTodo={handleDeleteTodo}
+              />
+            })}
+          </div >
+
+        }
+
 
       </div>
     </div>
   )
-}
-
-
-interface ITodosSection {
-  todos: ITodo[]
-}
-
-function TodosSection({ todos }: ITodosSection) {
-
-  function handleCheckTodo(todoId: number) {
-    alert(`todo ${todoId} updated`)
-  }
-
-  function handleDeleteTodo(todoId: number) {
-    alert(`todo ${todoId} deleted`)
-  }
-
-  if (todos) {
-    return (
-      <div className={styles.contentTodos}>
-        {todos.map(item => {
-          return <Todo
-            key={item.id}
-            todo={item}
-            onCheckTodo={handleCheckTodo}
-            onDeleteTodo={handleDeleteTodo}
-          />
-        })}
-      </div >
-    )
-  } else {
-    return (
-      <div className={styles.contentTodos}>
-        <img src={clipboardIco} alt="Clipboard" />
-        <span>Você ainda não tem tarefas cadastradas</span>
-        <p>Crie tarefas e organize seus itens a fazer</p>
-      </div>
-    )
-  }
 }
 
 export default App
