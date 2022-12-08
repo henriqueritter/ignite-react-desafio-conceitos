@@ -4,8 +4,16 @@ import clipboardIco from './assets/clipboard.svg';
 import { PlusCircle, Trash, Circle, CheckCircle, Student } from 'phosphor-react';
 
 import { Todo } from './components/Todo';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
-const todos: ITodo[] = [
+interface ITodo {
+  id: number;
+  content: string;
+  isChecked: boolean;
+}
+
+
+const initialTodos: ITodo[] = [
   {
     id: 1234,
     content: "Duis vel sed fames integer",
@@ -23,7 +31,27 @@ const todos: ITodo[] = [
   }
 ];
 
+
 function App() {
+  const [todos, setTodos] = useState<ITodo[]>(initialTodos);
+  let content = "abc";
+
+  function handleNewTodoChange(event: ChangeEvent<HTMLTextAreaElement>) {
+    event.target.setCustomValidity('');
+    content = event.target.value;
+  }
+
+  function handleCreateNewTodo(event: FormEvent) {
+    event.preventDefault();
+
+    const newTodo = {
+      id: todos.length + 1,
+      content,
+      isChecked: false
+    }
+
+    setTodos([...todos, newTodo])
+  }
 
   return (
     <div className="App">
@@ -31,8 +59,11 @@ function App() {
         <img src={rocketLogo} className={styles.headerLogo} alt="Logo Foguete" />
         <strong className={styles.headerTitle}>to</strong><strong>do</strong>
       </header>
-      <form className={styles.todoForm} onScroll={() => alert('OK')}>
-        <textarea placeholder='Adicione uma nova tarefa' />
+      <form className={styles.todoForm} onSubmit={handleCreateNewTodo} onScroll={() => alert('OK')}>
+        <textarea
+          onChange={handleNewTodoChange}
+          value={content}
+          placeholder='Adicione uma nova tarefa' />
         <button>
           Criar <PlusCircle size={32} />
         </button>
@@ -48,20 +79,19 @@ function App() {
             <span className={styles.taskCounter}>{`${todos.filter(todo => todo.isChecked == true).length} de ${todos.length}`}</span>
           </span>
         </div>
-        <TodosSection />
+        <TodosSection todos={todos} />
 
       </div>
     </div>
   )
 }
 
-interface ITodo {
-  id: number;
-  content: string;
-  isChecked: boolean;
+
+interface ITodosSection {
+  todos: ITodo[]
 }
 
-function TodosSection(props: any) {
+function TodosSection({ todos }: ITodosSection) {
 
   function handleCheckTodo(todoId: number) {
     alert(`todo ${todoId} updated`)
@@ -76,6 +106,7 @@ function TodosSection(props: any) {
       <div className={styles.contentTodos}>
         {todos.map(item => {
           return <Todo
+            key={item.id}
             todo={item}
             onCheckTodo={handleCheckTodo}
             onDeleteTodo={handleDeleteTodo}
