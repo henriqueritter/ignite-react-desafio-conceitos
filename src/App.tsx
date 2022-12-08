@@ -32,7 +32,7 @@ const initialTodos: ITodo[] = [
 ];
 
 function App() {
-  const [todos, setTodos] = useState<ITodo[]>(ini);
+  const [todos, setTodos] = useState<ITodo[]>(initialTodos);
   let content = "";
 
   function handleNewTodoChange(event: ChangeEvent<HTMLTextAreaElement>) {
