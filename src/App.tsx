@@ -15,17 +15,17 @@ interface ITodo {
 
 const initialTodos: ITodo[] = [
   {
-    id: 1234,
+    id: 1,
     content: "Duis vel sed fames integer",
     isChecked: true
   },
   {
-    id: 1235,
+    id: 2,
     content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer",
     isChecked: true
   },
   {
-    id: 1236,
+    id: 3,
     content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer",
     isChecked: false
   }
@@ -57,7 +57,9 @@ function App() {
   }
 
   function handleDeleteTodo(todoId: number) {
-    alert(`todo ${todoId} deleted`)
+    const todosWithoutDeletedTodo = todos.filter(todo => todo.id !== todoId);
+
+    setTodos(todosWithoutDeletedTodo);
   }
 
   return (
