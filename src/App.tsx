@@ -53,17 +53,11 @@ function App() {
   }
 
   function handleCheckTodo(todoId: number) {
-    const todo = todos.find(todo => todo.id === todoId);
-
-    const newTodos: ITodo[] = todos.filter(todo => todo.id !== todoId);
-
-    if (todo) {
-      todo.isChecked = todo.isChecked ? false : true
-      newTodos.push(todo)
-    }
+    const todoIndex = todos.findIndex(todo => todo.id === todoId);
 
 
-    setTodos(newTodos);
+    todos[todoIndex].isChecked = todos[todoIndex].isChecked ? false : true
+    setTodos([...todos]);
   }
 
   function handleDeleteTodo(todoId: number) {
